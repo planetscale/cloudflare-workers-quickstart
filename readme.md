@@ -1,6 +1,6 @@
-## CloudFlare Workers quickstart
+## Cloudflare Workers quickstart
 
-This repository contains a simple CloudFlare worker example that will run a query from a PlanetScale database that may be queried via HTTP. The rows are returned in the payload as JSON.
+This repository contains a simple Cloudflare worker example that will run a query from a PlanetScale database that may be queried via HTTP. The rows are returned in the payload as JSON.
 
 ## How to use this demo
 
@@ -9,7 +9,7 @@ This repository contains a simple CloudFlare worker example that will run a quer
 Before you can use this demo, make sure you have the following:
 
 - A PlanetScale account
-- A CloudFlare account
+- A Cloudflare account
 - NodeJS installed 
 
 ### 1.a Create a database
@@ -30,17 +30,17 @@ Open the `worker` directory in your terminal and run the following command to in
 npm install
 ```
 
-Then run the following to publish the Worker to your CloudFlare account:
+Then run the following to publish the Worker to your Cloudflare account:
 
 ```sh
 npx wrangler publish
 ```
 
-### 3. Set up the integration in CloudFlare
+### 3. Set up the integration in Cloudflare
 
-Open CloudFlare in your browser. Navigate to Workers > Overview, and select you worker from the list. Once there, navigate to Settings > Integrations and click Add Integration in the PlanetScale card.
+Open Cloudflare in your browser. Navigate to Workers > Overview, and select you worker from the list. Once there, navigate to Settings > Integrations and click Add Integration in the PlanetScale card.
 
-This will open a new page that will walk you through the process of connecting your PlanetScale database to CloudFlare:
+This will open a new page that will walk you through the process of connecting your PlanetScale database to Cloudflare:
 
 1. Click Accept to allow this process to write secrets to your Worker.
 2. Authenticate with PlanetScale. Make sure to allow access to the organization, database, and branch you wish to connect to.
@@ -77,5 +77,5 @@ If done correctly, you should data from the database in the browser window. If y
 
 ## Related resources:
 
-- On the blog: [Integrate CloudFlare Workers with PlanetScale](https://planetscale.com/blog/integrate-cloudflare-workers-with-planetscale)
-- On YouTube: [Integrate PlanetScale with CloudFlare Workers](TODO: )
+- On the blog: [Integrate Cloudflare Workers with PlanetScale](https://planetscale.com/blog/integrate-cloudflare-workers-with-planetscale)
+- On YouTube: [Integrate PlanetScale with Cloudflare Workers](https://youtu.be/K21jb_yv33Y)
