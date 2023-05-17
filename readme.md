@@ -1,0 +1,81 @@
+## CloudFlare Workers quickstart
+
+This repository contains a simple CloudFlare worker example that will run a query from a PlanetScale database that may be queried via HTTP. The rows are returned in the payload as JSON.
+
+## How to use this demo
+
+### Prerequisites
+
+Before you can use this demo, make sure you have the following:
+
+- A PlanetScale account
+- A CloudFlare account
+- NodeJS installed 
+
+### 1.a Create a database
+
+This method assumes you dont currently have a database set up to test with. A script is provided at `db/create_table.sql` that can be used to create a table and insert some data for testing.
+
+Start by creating a PlanetScale database using the [guide located on our documentation portal](https://planetscale.com/docs/onboarding/create-a-database). Once the database has been created, you may run the script via the Console tab in the PlanetScale Dashboard. 
+
+### 1.b Modify the SELECT query
+
+If you have a database you wish to test with, you may modify the SELECT query located in the code. The query will be within the `conn.execute()` method of `worker/src/index.js`.
+
+### 2. Publish the Worker
+
+Open the `worker` directory in your terminal and run the following command to install the dependencies:
+
+```sh
+npm install
+```
+
+Then run the following to publish the Worker to your CloudFlare account:
+
+```sh
+npx wrangler publish
+```
+
+### 3. Set up the integration in CloudFlare
+
+Open CloudFlare in your browser. Navigate to Workers > Overview, and select you worker from the list. Once there, navigate to Settings > Integrations and click Add Integration in the PlanetScale card.
+
+This will open a new page that will walk you through the process of connecting your PlanetScale database to CloudFlare:
+
+1. Click Accept to allow this process to write secrets to your Worker.
+2. Authenticate with PlanetScale. Make sure to allow access to the organization, database, and branch you wish to connect to.
+3. Select your PlanetScale organization, click Continue.
+4. Select your Database and User role, click Continue. 
+> More information on user roles can be found in our [documentation](https://planetscale.com/docs/concepts/password-roles).
+5. Select the database branch you wish to connect to. Click Continue.
+6. Review the secrets that will be created. For the sake of this demo, these values can be left as-is.
+
+Click Add Integration to complete the process.
+
+### 4. Test the Worker function
+
+In the overview of the worker, a preview URL is provided near the top of the page with the format `https://{PROJECT_NAME}.{ACCOUNT_NAME}.workers.dev`. Click that to open a new browser tab where the Worker will execute the code and return the results. 
+
+If done correctly, you should data from the database in the browser window. If you used the sample script provided with this repository, the results will look like this:
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Hotel California",
+        "address": "1967 Can Never Leave Ln, San Fancisco CA, 94016",
+        "stars": 7.6
+    },
+    {
+        "id": 2,
+        "name": "The Galt House",
+        "address": "140 N Fourth St, Louisville, KY 40202",
+        "stars": 8
+    }
+]
+```
+
+## Related resources:
+
+- On the blog: [Integrate CloudFlare Workers with PlanetScale](https://planetscale.com/blog/integrate-cloudflare-workers-with-planetscale)
+- On YouTube: [Integrate PlanetScale with CloudFlare Workers](TODO: )
