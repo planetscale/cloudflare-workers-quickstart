@@ -10,6 +10,9 @@
     "deploy": "wrangler publish"
   },
   "dependencies": {
-    "@planetscale/database": "^1.7.0"
+    "@planetscale/database": "^1.7.0",
+    "itty-router": "^3.0.12",
+    "itty-router-extras": "^0.4.2",
+    "serverless-cloudflare-workers": "^1.2.0"
   }
 }

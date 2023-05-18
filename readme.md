@@ -12,15 +12,11 @@ Before you can use this demo, make sure you have the following:
 - A Cloudflare account
 - NodeJS installed 
 
-### 1.a Create a database
+### 1 Create a database
 
-This method assumes you dont currently have a database set up to test with. A script is provided at `db/create_table.sql` that can be used to create a table and insert some data for testing.
+This demo assumes you dont currently have a database set up to test with. A script is provided at `db/create_table.sql` that can be used to create a table and insert some data for testing.
 
-Start by creating a PlanetScale database using the [guide located on our documentation portal](https://planetscale.com/docs/onboarding/create-a-database). Once the database has been created, you may run the script via the Console tab in the PlanetScale Dashboard. 
-
-### 1.b Modify the SELECT query
-
-If you have a database you wish to test with, you may modify the SELECT query located in the code. The query will be within the `conn.execute()` method of `worker/src/index.js`.
+Start by creating a PlanetScale database using the [guide located on our documentation portal](https://planetscale.com/docs/onboarding/create-a-database). Once the database has been created, you may run the script via the Console tab in the PlanetScale Dashboard.
 
 ### 2. Publish the Worker
 
@@ -44,13 +40,13 @@ This will open a new page that will walk you through the process of connecting y
 
 1. Click Accept to allow this process to write secrets to your Worker.
 2. Authenticate with PlanetScale. Make sure to allow access to the organization, database, and branch you wish to connect to.
-3. Select your PlanetScale organization, click Continue.
-4. Select your Database and User role, click Continue. 
+3. Select your PlanetScale organization, click "**Continue**:.
+4. Select your Database and User role, click "**Continue**". 
 > More information on user roles can be found in our [documentation](https://planetscale.com/docs/concepts/password-roles).
-5. Select the database branch you wish to connect to. Click Continue.
+5. Select the database branch you wish to connect to. Click "**Continue**".
 6. Review the secrets that will be created. For the sake of this demo, these values can be left as-is.
 
-Click Add Integration to complete the process.
+Click "**Add Integration**" to complete the process.
 
 ### 4. Test the Worker function
 
@@ -74,6 +70,18 @@ If done correctly, you should data from the database in the browser window. If y
     }
 ]
 ```
+
+Once the integration is configured, you can also run the project on your computer using:
+
+```sh
+npx wrangler dev
+```
+
+This will automatically use the secrets defined in Cloudflare to run the Worker on your computer. 
+
+### 5. Test the HTTP methods (optional)
+
+To test the various HTTP methods, you may also use the provided `tests.http` file which is designed to work with the [VSCode REST client plugin](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). The file is preconfigured to work with the local environment, or you can change the `@host` variable to match the URL provided in the Cloudflare dashboard that cooresponds with your Worker project.
 
 ## Related resources:
 

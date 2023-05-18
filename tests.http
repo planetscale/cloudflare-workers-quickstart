@@ -1,0 +1,30 @@
+@host=http://127.0.0.1:8787
+
+### Get list of hotels
+get {{host}}/
+
+### Get a single hotel
+get {{host}}/1
+
+### Create a hotel
+post {{host}}
+Content-Type: application/json
+
+{
+  "name": "Chicago Central Hotel",
+  "address": "10101 Wacker Dr, Chicago IL, 60006",
+  "stars": 1.2
+}
+
+### Update a hotel
+put {{host}}/1
+Content-Type: application/json
+
+{
+  "name": "Chicago Central Hotel updated",
+  "address": "10101 Wacker Dr, Chicago IL, 60006 here too!",
+  "stars": 12.1
+}
+
+### Delete a hotel
+delete {{host}}/10
